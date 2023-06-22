@@ -66,7 +66,7 @@ class RadioTest {
     }
 
     @Test
-    public void shouldIncreaseStationNumber1() {
+    public void shouldIncreaseMaxStationNumber() {
         Radio radio = new Radio();
         radio.setCurrentStationNumber(9);
         radio.increaseStationNumber();
@@ -77,13 +77,58 @@ class RadioTest {
     }
 
     @Test
-    public void shouldDecreaseRadioStationNumber1() {
+    public void shouldDecreaseMinRadioStationNumber() {
         Radio radio = new Radio();
         radio.setCurrentStationNumber(0);
         radio.decreaseStationNumber();
 
         int expected = 9;
         int actual = radio.getCurrentStationNumber();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldNumberBorderRadioStation() {
+        Radio radio = new Radio();
+
+        radio.setCurrentStationNumber(8);
+
+        int expected = 8;
+        int actual = radio.getCurrentStationNumber();
+
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void shouldNumberBorderNegativeRadioStation() {
+        Radio radio = new Radio();
+
+        radio.setCurrentStationNumber(10);
+
+        int expected = 0;
+        int actual = radio.getCurrentStationNumber();
+
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void shouldNumberBorderRadioStation1() {
+        Radio radio = new Radio();
+
+        radio.setCurrentStationNumber(1);
+
+        int expected = 1;
+        int actual = radio.getCurrentStationNumber();
+
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void shouldNumberBorderNegativeRadioStation1() {
+        Radio radio = new Radio();
+
+        radio.setCurrentStationNumber(-1);
+
+        int expected = 0;
+        int actual = radio.getCurrentStationNumber();
+
         Assertions.assertEquals(expected, actual);
     }
 

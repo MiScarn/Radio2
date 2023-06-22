@@ -9,6 +9,7 @@ public class Radio {
     private int currentVolume;
 
     public int getCurrentStationNumber() {
+
         return currentStationNumber;
     }
 
@@ -25,6 +26,7 @@ public class Radio {
 
 
     public int getCurrentVolume() {
+
         return currentVolume;
     }
 
