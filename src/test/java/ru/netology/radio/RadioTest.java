@@ -202,7 +202,7 @@ class RadioTest {
     @Test
     public void shouldDecreaseBelowMinVolume() {
         Radio radio= new Radio();
-        radio.setCurrentVolume(0);
+        radio.setCurrentVolume(-1);
         radio.decreaseVolume();
 
         int expected = 0;
@@ -212,7 +212,7 @@ class RadioTest {
     @Test
     public void shouldIncreaseAboveMaxVolume() {
         Radio radio= new Radio();
-        radio.setCurrentVolume(10);
+        radio.setCurrentVolume(11);
         radio.increaseVolume();
 
         int expected = 10;
