@@ -46,7 +46,7 @@ public class Radio {
         if (currentVolume < 10) {
             currentVolume++;
         } else {
-            currentVolume = maxVolume;
+            currentVolume = minVolume;
         }
     }
 
