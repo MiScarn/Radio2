@@ -135,10 +135,10 @@ class RadioTest {
     @Test
     public void shouldMaxVolume() {
         Radio radio = new Radio();
-        radio.setCurrentVolume(10);
+        radio.setCurrentVolume(100);
         radio.increaseVolume();     //максимальное значение громкости
 
-        int expected = 0;
+        int expected = 100;
         int actual = radio.getCurrentVolume();
         Assertions.assertEquals(expected, actual);
     }
@@ -168,10 +168,10 @@ class RadioTest {
     @Test
     public void shouldDecreaseVolume() {
         Radio radio = new Radio();
-        radio.setCurrentVolume(7);  //повышает громкость
+        radio.setCurrentVolume(30);  //повышает громкость
         radio.decreaseVolume();
 
-        int expected = 6;
+        int expected = 29;
         int actual = radio.getCurrentVolume();
         Assertions.assertEquals(expected, actual);
     }
@@ -179,10 +179,10 @@ class RadioTest {
     @Test
     public void shouldIncreaseMaxVolume() {
         Radio radio = new Radio();
-        radio.setCurrentVolume(10);
+        radio.setCurrentVolume(99);
         radio.increaseVolume();    //повышает до макс значения
 
-        int expected = 0;
+        int expected = 100;
         int actual = radio.getCurrentVolume();
         Assertions.assertEquals(expected, actual);
     }
@@ -212,7 +212,7 @@ class RadioTest {
     @Test
     public void shouldIncreaseAboveMaxVolume() {
         Radio radio= new Radio();
-        radio.setCurrentVolume(11);           //повышает выше макс. значения
+        radio.setCurrentVolume(110);           //повышает выше макс. значения
 
 
         int expected = 0;
@@ -224,10 +224,10 @@ class RadioTest {
     @Test
     public void shouldIncreaseMaxVolume1() {
         Radio radio= new Radio();
-        radio.setCurrentVolume(9);           //повышает выше макс. значения
+        radio.setCurrentVolume(99);           //повышает выше макс. значения
         radio.increaseVolume();
 
-        int expected = 10;
+        int expected = 100;
         int actual = radio.getCurrentVolume();
         Assertions.assertEquals(expected, actual);
     }
@@ -248,9 +248,9 @@ class RadioTest {
     public void shouldNumberBorderVolume() {               //граничные значения громкости 9
         Radio radio = new Radio();
 
-        radio.setCurrentVolume(9);
+        radio.setCurrentVolume(99);
 
-        int expected = 9;
+        int expected = 99;
         int actual = radio.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
@@ -260,7 +260,7 @@ class RadioTest {
     public void shouldNumberBorderNegativeVolume() {            // граничные значения громкости 11
         Radio radio = new Radio();
 
-        radio.setCurrentVolume(11);
+        radio.setCurrentVolume(101);
 
         int expected = 0;
         int actual = radio.getCurrentVolume();
@@ -288,6 +288,45 @@ class RadioTest {
 
         int expected = 0;
         int actual = radio.getCurrentVolume();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void newNumberRadioStation() {                 // новое радио с новыми условиями, текущая 15
+        Radio radio = new Radio(20);
+
+        radio.setCurrentStationNumber(-1);
+
+        int expected = 0;
+        int actual = radio.getCurrentStationNumber();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+
+    @Test
+    public void newBorderNumberRadioStation() {           // новое радио с новыми условиями, текущая 19
+        Radio radio = new Radio(20);
+
+
+        radio.setCurrentStationNumber(19);
+
+        int expected = 19;
+        int actual = radio.getCurrentStationNumber();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void newBorderNegativeNumberRadioStation() {         // новое радио с новыми условиями, текущая 21
+        Radio radio = new Radio(20);
+
+
+        radio.setCurrentStationNumber(21);
+
+        int expected = 0;
+        int actual = radio.getCurrentStationNumber();
 
         Assertions.assertEquals(expected, actual);
     }
